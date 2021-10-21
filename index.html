@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gradient Generator</title>
+        <link rel="stylesheet" href="./destyle.css">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" id="favicon" href="icon.png">
+    </head>
+    <body>
+        <h1 class="title">グラデーション</h1>
+        <div class="center">
+            <div class="param">
+                <div class="setting">
+                    <div class="numberinput">
+                        <p>左上</p>
+                        <input type="color" id="$tl" value="#ffff00" onchange="changeValue()">
+                    </div>
+                    <div class="numberinput">
+                        <p>右上</p>
+                        <input type="color" id="$tr" value="#ff0000" onchange="changeValue()">
+                    </div>
+                </div>
+                <div class="setting">
+                    <div class="numberinput">
+                        <p>左下</p>
+                        <input type="color" id="$bl" value="#00ff00" onchange="changeValue()">
+                    </div>
+                    <div class="numberinput">
+                        <p>右下</p>
+                        <input type="color" id="$br" value="#0000ff" onchange="changeValue()">
+                    </div>
+                </div>
+            </div>
+            <button id="save">画像として保存</button>
+            <div class="canvas">
+                <canvas id="canvas" width="600" height="600">
+                Oh no! Your browser doesn't support canvas!
+                </canvas>
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
