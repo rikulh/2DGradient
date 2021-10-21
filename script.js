@@ -35,10 +35,10 @@ onload = function() {
 };
 
 function changeValue() {
-    tl = hexToArr($tl.value);
-    tr = hexToArr($tr.value);
-    bl = hexToArr($bl.value);
-    br = hexToArr($br.value);
+    // tl = hexToArr(#$tl.value);
+    // tr = hexToArr(#$tr.value);
+    // bl = hexToArr(#$bl.value);
+    // br = hexToArr(#$br.value);
     make()
 }
 
@@ -46,10 +46,6 @@ let tl = [255,255,0];
 let tr = [255,0,0];
 let bl = [0,255,0];
 let br = [0,0,255];
-$tl.value = "#FFFF00";
-$tr.value = "#FF0000";
-$bl.value = "#00FF00";
-$br.value = "##0000FF"
 function mix(l,r,deg) {
     return l+(r-l)*deg
 }
@@ -60,3 +56,70 @@ function hexToArr(hex) {
     let val = hex.replace("#", '');
     return val.match(/.{2}/g).map(x => parseInt(x,16)); 
 }
+
+const tlPic = Pickr.create({
+    el: '#$tl',
+    theme: 'nano',
+    default: "ffff00",
+    showAlways: false,
+    closeWithKey: 'Escape',
+    defaultRepresentation: 'HEXA',
+    components: {
+        preview: true,
+        opacity: false,
+        hue: true,
+
+        interaction: {
+            hex: false,
+            rgba: false,
+            hsva: false,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+const trPic = Pickr.create({
+    el: '#$tr',
+    theme: 'nano',
+    default: "ff0000",
+    showAlways: false,
+    closeWithKey: 'Escape',
+    defaultRepresentation: 'HEXA',
+    components: {
+        preview: true,
+        opacity: false,
+        hue: true,
+
+        interaction: {
+            hex: false,
+            rgba: false,
+            hsva: false,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+const blPic = Pickr.create({
+    el: '#$bl',
+    theme: 'nano',
+    default: "00ff00",
+    showAlways: false,
+    closeWithKey: 'Escape',
+    defaultRepresentation: 'HEXA',
+    components: {
+        preview: true,
+        opacity: false,
+        hue: true,
+
+        interaction: {
+            hex: false,
+            rgba: false,
+            hsva: false,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});

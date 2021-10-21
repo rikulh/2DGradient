@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Gradient Generator</title>
-        <link rel="stylesheet" href="./destyle.css">
+        <link rel="stylesheet" href="./libs/destyle.css">
+        <link rel="stylesheet" href="./libs/nano.min.css">
         <link rel="stylesheet" href="./style.css">
         <link rel="icon" id="favicon" href="icon.png">
     </head>
@@ -12,24 +13,12 @@
         <div class="center">
             <div class="param">
                 <div class="setting">
-                    <div class="numberinput">
-                        <p>左上</p>
-                        <input type="color" id="$tl" value="#ffff00" onchange="changeValue()">
-                    </div>
-                    <div class="numberinput">
-                        <p>右上</p>
-                        <input type="color" id="$tr" value="#ff0000" onchange="changeValue()">
-                    </div>
+                    <div id="$tl"></div>
+                    <div id="$tr"></div>
                 </div>
                 <div class="setting">
-                    <div class="numberinput">
-                        <p>左下</p>
-                        <input type="color" id="$bl" value="#00ff00" onchange="changeValue()">
-                    </div>
-                    <div class="numberinput">
-                        <p>右下</p>
-                        <input type="color" id="$br" value="#0000ff" onchange="changeValue()">
-                    </div>
+                    <div id="$bl"></div>
+                    <div id="$br"></div>
                 </div>
             </div>
             <button id="save">画像として保存</button>
@@ -40,5 +29,6 @@
             </div>
         </div>
     </body>
-    <script src="script.js"></script>
+    <script src="./libs/pickr.min.js"></script>
+    <script src="./script.js"></script>
 </html>
