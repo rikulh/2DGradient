@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Noto-Sans';
+    src: url('./font/NotoSansJP-Regular.otf') format('opentype');
+}
 .center {
     position: absolute;
     top: 10%;
@@ -5,12 +9,13 @@
 }
 body {
     height: 1000px;
+    font-family: Noto-Sans;
 }
 .canvas {
     transform: translate(-50%,0);
 }
 .param {
-    transform: translate(-25%,0);
+    position: absolute;
 }
 #save {
     border: 1px solid black;
@@ -18,6 +23,7 @@ body {
     padding: 10px;
     transform: translate(-50%,0);
     margin: 30px 0px;
+    margin-bottom: 80px;
 }
 .title {
     text-align: center;
@@ -28,7 +34,41 @@ body {
 .setting {
     margin-top: 30px;
 }
-.number {
-    font-size: 30px;
-    text-align: center;
+.trWrap {
+    position: absolute;
+    top: 110px;
+    left: 310px;
 }
+.tlWrap {
+    position: absolute;
+    top: 110px;
+    left: -342px;
+}
+.brWrap {
+    position: absolute;
+    top: 760px;
+    left: 310px;
+}
+.blWrap {
+    position: absolute;
+    top: 760px;
+    left: -342px;
+}
+/* .wrap:hover:first-child {
+    border-radius: 50%;
+    background-image: url("./images/remove.png");
+    background-size: cover;
+    top: -10px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+.remove {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 32px;
+    height: 32px;
+    z-index: 100;
+} */

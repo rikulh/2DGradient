@@ -35,10 +35,10 @@ onload = function() {
 };
 
 function changeValue() {
-    // tl = hexToArr(#$tl.value);
-    // tr = hexToArr(#$tr.value);
-    // bl = hexToArr(#$bl.value);
-    // br = hexToArr(#$br.value);
+    // tl = hexToArr(.tl.value);
+    // tr = hexToArr(.tr.value);
+    // bl = hexToArr(.bl.value);
+    // br = hexToArr(.br.value);
     make()
 }
 
@@ -46,19 +46,42 @@ let tl = [255,255,0];
 let tr = [255,0,0];
 let bl = [0,255,0];
 let br = [0,0,255];
+
 function mix(l,r,deg) {
-    return l+(r-l)*deg
+    return l+(r-l)*deg;
 }
 function mix2D(tl,tr,bl,br,xdeg,ydeg) {
-    return mix(mix(tl,tr,xdeg),mix(bl,br,xdeg),ydeg)
+    return mix(mix(tl,tr,xdeg),mix(bl,br,xdeg),ydeg);
 }
+function multiMix(color,pos,deg) {
+    for (let i=0;i<pos.length;i++) {
+        if (pos[i] <= p && p <= a[i+1]) {
+            return mix(color[i],color[i+1],((deg - pos[i]) / (pos[i+1] - pos[i])));
+        }
+    }
+}
+function multiMix2D(top,bottom,left,right,xdeg,ydeg) {
+    let a = mix(mmix(left,ydeg),mmix(right,ydeg),xdeg);
+    let b = mix(mmix(top,xdeg),mmix(bottom,xdeg),ydeg);
+    let c = mix(mix(top.first,top.slice(-1)[0],xdeg),mix(bottom.first,bottom.slice(-1)[0],xdeg),ydeg);
+    return a + b - c;
+}
+
 function hexToArr(hex) {
     let val = hex.replace("#", '');
     return val.match(/.{2}/g).map(x => parseInt(x,16)); 
 }
+function colorToArr(color) {
+    let arr = new Array(3);
+    for (let i=0;i<3;i++) {
+        arr[i] = Number(parseInt(color[i],16));
+    };
+    return arr;
+}
 
 const tlPic = Pickr.create({
-    el: '#$tl',
+    el: '.tl',
+    name: 'tl',
     theme: 'nano',
     default: "ffff00",
     showAlways: false,
@@ -80,7 +103,8 @@ const tlPic = Pickr.create({
     }
 });
 const trPic = Pickr.create({
-    el: '#$tr',
+    el: '.tr',
+    name: 'tr',
     theme: 'nano',
     default: "ff0000",
     showAlways: false,
@@ -102,7 +126,8 @@ const trPic = Pickr.create({
     }
 });
 const blPic = Pickr.create({
-    el: '#$bl',
+    el: '.bl',
+    name: 'bl',
     theme: 'nano',
     default: "00ff00",
     showAlways: false,
@@ -122,4 +147,48 @@ const blPic = Pickr.create({
             save: true
         }
     }
+});
+const brPic = Pickr.create({
+    el: '.br',
+    name: 'br',
+    theme: 'nano',
+    default: "0000ff",
+    showAlways: false,
+    closeWithKey: 'Escape',
+    defaultRepresentation: 'HEXA',
+    components: {
+        preview: true,
+        opacity: false,
+        hue: true,
+
+        interaction: {
+            hex: false,
+            rgba: false,
+            hsva: false,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+
+trPic.on('save', (color, instance) => {
+    console.log(instance.options.name);
+    tr = colorToArr(color.toHEXA());
+    make();
+});
+tlPic.on('save', (color, instance) => {
+    console.log(instance.options.name);
+    tl = colorToArr(color.toHEXA());
+    make();
+});
+brPic.on('save', (color, instance) => {
+    console.log(instance.options.name);
+    br = colorToArr(color.toHEXA());
+    make();
+});
+blPic.on('save', (color, instance) => {
+    console.log(instance.options.name);
+    bl = colorToArr(color.toHEXA());
+    make();
 });

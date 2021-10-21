@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Gradient Generator</title>
         <link rel="stylesheet" href="./libs/destyle.css">
-        <link rel="stylesheet" href="./libs/nano.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
         <link rel="stylesheet" href="./style.css">
         <link rel="icon" id="favicon" href="icon.png">
     </head>
@@ -13,12 +13,24 @@
         <div class="center">
             <div class="param">
                 <div class="setting">
-                    <div id="$tl"></div>
-                    <div id="$tr"></div>
+                    <div class="tlWrap wrap">
+                        <div class="remove"></div>
+                        <div class="tl"></div>
+                    </div>
+                    <div class="trWrap wrap">
+                        <div class="remove"></div>
+                        <div class="tr"></div>
+                    </div>
                 </div>
                 <div class="setting">
-                    <div id="$bl"></div>
-                    <div id="$br"></div>
+                    <div class="blWrap wrap">
+                        <div class="remove"></div>
+                        <div class="bl"></div>
+                    </div>
+                    <div class="brWrap wrap">
+                        <div class="remove"></div>
+                        <div class="br"></div>
+                    </div>
                 </div>
             </div>
             <button id="save">画像として保存</button>
@@ -29,6 +41,6 @@
             </div>
         </div>
     </body>
-    <script src="./libs/pickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="./script.js"></script>
 </html>
