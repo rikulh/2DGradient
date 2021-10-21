@@ -172,23 +172,48 @@ const brPic = Pickr.create({
     }
 });
 
+let flag = 0;
 trPic.on('save', (color, instance) => {
     console.log(instance.options.name);
     tr = colorToArr(color.toHEXA());
     make();
+}).on('change', (color, source, instance) => {
+    if ((flag%10) == 0) {
+        tr = colorToArr(color.toHEXA());
+        make();
+    }
+    flag++;
 });
 tlPic.on('save', (color, instance) => {
     console.log(instance.options.name);
     tl = colorToArr(color.toHEXA());
     make();
+}).on('change', (color, source, instance) => {
+    if ((flag%10)== 0) {
+        tl = colorToArr(color.toHEXA());
+        make();
+    }
+    flag++;
 });
 brPic.on('save', (color, instance) => {
     console.log(instance.options.name);
     br = colorToArr(color.toHEXA());
     make();
+}).on('change', (color, source, instance) => {
+    if ((flag%10) == 0) {
+        br = colorToArr(color.toHEXA());
+        make();
+    }
+    flag++;
 });
 blPic.on('save', (color, instance) => {
     console.log(instance.options.name);
     bl = colorToArr(color.toHEXA());
     make();
+}).on('change', (color, source, instance) => {
+    if ((flag%10) == 0) {
+        bl = colorToArr(color.toHEXA());
+        make();
+    }
+    flag++;
 });
